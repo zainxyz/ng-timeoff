@@ -6,17 +6,11 @@ export default function ContentService() {
       switch (routeName) {
         case 'home':
           return {
-            title: 'Home Route',
-            body: `
-              Phasellus efficitur congue eros ut malesuada. Ut vulputate mattis erat ac lobortis.
-              Sed ultrices, eros a auctor tristique, urna augue pretium massa, sit amet ornare odio ante
-              sed turpis. In feugiat libero non nisl suscipit volutpat. Praesent interdum purus ligula,
-              ac faucibus erat pretium non. Nam arcu turpis, fermentum vel lacinia non, aliquam eu augue.
-              Vestibulum purus nunc, feugiat a tortor non, ultricies interdum eros.
-              Aliquam vitae sagittis massa. Pellentesque in justo eget quam pulvinar vehicula. Praesent
-              placerat diam diam, non rhoncus urna bibendum ac. Donec egestas accumsan magna et vehicula.
-              Pellentesque sollicitudin turpis aliquet, dapibus velit eget, facilisis lacus.
-            `,
+            title: 'Time-off Requests',
+            subtitles: [
+              'View your time-off requests and see if they have been approved or rejected.',
+              'In order to submit a new time-off request, please click on the \'Create Time Off\' button.',
+            ],
           };
         case 'about':
           return {

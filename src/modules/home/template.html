@@ -1,0 +1,17 @@
+<div class="home-module container py-3">
+  <h1>{{ $ctrl.content.title }}</h1>
+  <hr />
+  <p class="lead" data-ng-repeat="subtitle in $ctrl.content.subtitles">{{ subtitle }}</p>
+  <div class="row m-0 align-items-center justify-content-between">
+    <div clas "col">
+      <status-badges badges="$ctrl.badges"></status-badges>
+    </div>
+    <div clas "col">
+      <button type="button" class="btn btn-secondarys">Create Time Off</button>
+    </div>
+  </div>
+  <hr />
+  <div class="content">
+    {{ $ctrl.content.body }}
+  </div>
+</div>

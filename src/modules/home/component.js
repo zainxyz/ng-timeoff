@@ -1,4 +1,5 @@
 import controller from './controller';
+import template from './template.html';
 
 export default {
   bindings: {
@@ -6,12 +7,5 @@ export default {
   },
   controller,
   name: 'home-module',
-  template: `
-    <div class="home-module container py-3">
-      <h1>{{ $ctrl.content.title }}</h1>
-      <div class="content">
-        {{ $ctrl.content.body }}
-      </div>
-    </div>
-  `,
+  template,
 };
