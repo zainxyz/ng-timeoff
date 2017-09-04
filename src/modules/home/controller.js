@@ -8,12 +8,16 @@ export default class HomeCtrl {
   }
 
   $onInit() {
-    this.updateRequests();
-    this.statusBadges = this.timeOffService.getAllStatuses(this.requests);
+    this.updateTimeOffRequests();
   }
 
-  updateRequests = () => {
+  updateTimeOffRequests = () => {
     this.requests = [...this.$storage.timeOffRequests];
+    this.updateStatusBadges();
+  };
+
+  updateStatusBadges = () => {
+    this.statusBadges = this.timeOffService.getAllStatuses(this.requests);
   };
 
   addRequest() {
@@ -29,6 +33,6 @@ export default class HomeCtrl {
 
     this.$storage.timeOffRequests = [...this.$storage.timeOffRequests, singleRequest];
 
-    this.$scope.$watch(() => this.$storage, () => this.updateRequests());
+    this.$scope.$watch(() => this.$storage, () => this.updateTimeOffRequests());
   }
 }

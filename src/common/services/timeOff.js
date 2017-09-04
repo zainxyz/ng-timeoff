@@ -37,5 +37,11 @@ export default function TimeOffService(TIME_OFF) {
         count: statusCounts[status.toLowerCase()],
       }));
     },
+    getRandomStatus() {
+      const statusKeys = Object.keys(STATUS_MAP);
+      return statusKeys
+        .find((status, idx) => idx === Math.floor(Math.random() * statusKeys.length))
+        .toLowerCase();
+    },
   };
 }
