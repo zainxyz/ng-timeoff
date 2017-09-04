@@ -5,7 +5,7 @@ export default {
     badges: '< ',
   },
   controller,
-  name: 'status-badges ',
+  name: 'status-badges',
   template: `
     <div class="status-badges py-3">
       <button class="btn btn-light text-{{ badge.type }} mr-3" data-ng-repeat="badge in $ctrl.badges">
