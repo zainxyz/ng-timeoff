@@ -1,21 +1,22 @@
-export default function DateService(moment) {
-  'ngInject';
+import format from 'date-fns/format';
+import differenceInDays from 'date-fns/difference_in_days';
 
+export default function DateService() {
   return {
     toDateString(date, type) {
       switch (type) {
         case 'day':
-          return moment(date).format('D');
+          return format(date, 'DD');
         case 'month':
-          return moment(date).format('MMM');
+          return format(date, 'MMM');
         case 'weekday':
-          return moment(date).format('ddd');
+          return format(date, 'ddd');
         default:
-          return moment(date).format('MMM D, YYYY');
+          return format(date, 'MMM D, YYYY');
       }
     },
     getNumberOfDays(start, end) {
-      return moment(end).diff(moment(start), 'days');
+      return differenceInDays(end, start);
     },
   };
 }

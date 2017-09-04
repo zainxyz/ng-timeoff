@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 import ContentService from './content';
 import DataService from './data';
 import DateService from './date';
@@ -11,6 +9,5 @@ export default angular
   .factory('contentService', ContentService)
   .factory('dataService', DataService)
   .factory('dateService', DateService)
-  .factory('moment', () => moment)
   .factory('navigationService', NavigationService)
   .factory('timeOffService', TimeOffService);

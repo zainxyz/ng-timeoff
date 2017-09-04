@@ -22,7 +22,7 @@ export default class HomeCtrl {
 
   addRequest() {
     const singleRequest = {
-      status: 'rejected',
+      status: this.timeOffService.getRandomStatus(),
       notes:
         'There is a drag race going on next weekend at the Thunderhill Race Track in Willow, CA.',
       reason: 'weekend',
