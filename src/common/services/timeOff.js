@@ -1,9 +1,12 @@
+import random from 'lodash/random';
+
 export default function TimeOffService(TIME_OFF) {
   'ngInject';
 
   const REASON_MAP = { ...TIME_OFF.REASON_MAP };
   const STATUS_COLOR_MAP = { ...TIME_OFF.STATUS_COLOR_MAP };
   const STATUS_MAP = { ...TIME_OFF.STATUS_MAP };
+  const STATUS_LIST = [...TIME_OFF.STATUS_LIST];
 
   return {
     toReasonString(reason) {
@@ -38,10 +41,7 @@ export default function TimeOffService(TIME_OFF) {
       }));
     },
     getRandomStatus() {
-      const statusKeys = Object.keys(STATUS_MAP);
-      return statusKeys
-        .find((status, idx) => idx === Math.floor(Math.random() * statusKeys.length))
-        .toLowerCase();
+      return STATUS_LIST[random(0, STATUS_LIST.length - 1)].toLowerCase();
     },
   };
 }

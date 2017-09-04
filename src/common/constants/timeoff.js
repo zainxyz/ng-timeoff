@@ -13,10 +13,12 @@ const STATUS_MAP = {
   REJECTED: 'Rejected',
 };
 
+const STATUS_LIST = Object.keys(STATUS_MAP).map(key => STATUS_MAP[key]);
+
 const STATUS_COLOR_MAP = {
   PENDING: 'warning',
   APPROVED: 'success',
   REJECTED: 'danger',
 };
 
-export { REASON_MAP, STATUS_COLOR_MAP, STATUS_MAP };
+export { REASON_MAP, STATUS_COLOR_MAP, STATUS_MAP, STATUS_LIST };
