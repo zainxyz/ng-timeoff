@@ -4,7 +4,6 @@ import './style.scss';
 
 export default {
   bindings: {
-    badges: '<',
     requests: '<',
   },
   controller,

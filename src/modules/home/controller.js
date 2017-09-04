@@ -17,8 +17,6 @@ export default class HomeCtrl {
   };
 
   addRequest() {
-    console.log('adding new time off request');
-
     const singleRequest = {
       status: 'rejected',
       notes:
@@ -29,11 +27,8 @@ export default class HomeCtrl {
       endDate: new Date('September 10, 2017 18:00:00'),
     };
 
-    const timeOffRequests = [...this.$storage.timeOffRequests, singleRequest];
-    console.log('updated timeOffRequests :', timeOffRequests);
+    this.$storage.timeOffRequests = [...this.$storage.timeOffRequests, singleRequest];
 
-    this.$storage.timeOffRequests = [...timeOffRequests];
-
-    this.$scope.$watch('storage', () => this.updateRequests());
+    this.$scope.$watch(() => this.$storage, () => this.updateRequests());
   }
 }
