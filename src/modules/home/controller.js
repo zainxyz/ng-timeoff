@@ -1,38 +1,39 @@
 export default class HomeCtrl {
-  constructor(timeOffService) {
+  constructor($sessionStorage, timeOffService, $scope) {
     'ngInject';
 
     this.timeOffService = timeOffService;
+    this.$storage = $sessionStorage;
+    this.$scope = $scope;
   }
 
   $onInit() {
-    this.requests = [
-      {
-        status: 'rejected',
-        notes: 'I have to go to the traffic court...duh!',
-        reason: 'traffic',
-        submittedDate: new Date('July 31, 2017 8:13:22'),
-        startDate: new Date('August 18, 2017 08:00:00'),
-        endDate: new Date('September 30, 2017 00:00:00'),
-      },
-      {
-        status: 'pending',
-        notes: 'The weekend is coming up and I have plans to go to the Cochella before it ends. Please approve immediately!!! Thank you :)',
-        reason: 'weekend',
-        submittedDate: new Date('April 1, 2017 04:59:00'),
-        startDate: new Date('April 20, 2017 08:00:00'),
-        endDate: new Date('April 22, 2017 23:00:00'),
-      },
-      {
-        status: 'approved',
-        notes: 'There is a Hackathon going on over at the SurveyMonkey headquarters in SF',
-        reason: 'http',
-        submittedDate: new Date('September 1, 2017 11:11:36'),
-        startDate: new Date('September 13, 2017 08:00:00'),
-        endDate: new Date('September 15, 2017 16:00:00'),
-      },
-    ];
-
+    this.updateRequests();
     this.statusBadges = this.timeOffService.getAllStatuses(this.requests);
+  }
+
+  updateRequests = () => {
+    this.requests = [...this.$storage.timeOffRequests];
+  };
+
+  addRequest() {
+    console.log('adding new time off request');
+
+    const singleRequest = {
+      status: 'rejected',
+      notes:
+        'There is a drag race going on next weekend at the Thunderhill Race Track in Willow, CA.',
+      reason: 'weekend',
+      submittedDate: new Date('September 3, 2017 10:24:11'),
+      startDate: new Date('September 9, 2017 08:00:00'),
+      endDate: new Date('September 10, 2017 18:00:00'),
+    };
+
+    const timeOffRequests = [...this.$storage.timeOffRequests, singleRequest];
+    console.log('updated timeOffRequests :', timeOffRequests);
+
+    this.$storage.timeOffRequests = [...timeOffRequests];
+
+    this.$scope.$watch('storage', () => this.updateRequests());
   }
 }

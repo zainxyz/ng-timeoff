@@ -1,13 +1,15 @@
 import moment from 'moment';
 
 import ContentService from './content';
-import NavigationService from './navigation';
+import DataService from './data';
 import DateService from './date';
+import NavigationService from './navigation';
 import TimeOffService from './timeOff';
 
 export default angular
   .module('app.common.services', [])
   .factory('contentService', ContentService)
+  .factory('dataService', DataService)
   .factory('dateService', DateService)
   .factory('moment', () => moment)
   .factory('navigationService', NavigationService)

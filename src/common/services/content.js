@@ -14,7 +14,7 @@ export default function ContentService() {
           };
         case 'about':
           return {
-            title: 'About Route',
+            title: 'About ng-Time-Off',
             body: `
               Proin dignissim nec turpis in malesuada. Aliquam scelerisque hendrerit odio nec maximus.
               Integer luctus, erat non aliquet tristique, nunc neque efficitur felis, in efficitur

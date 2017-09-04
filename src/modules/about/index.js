@@ -1,12 +1,11 @@
 import angular from 'angular';
-import uiRouter from '@uirouter/angularjs';
 
 import commonServices from 'common/services';
 
 import AboutComponent from './component';
 
 export default angular
-  .module('app.modules.aboutModule', [uiRouter, commonServices.name])
+  .module('app.modules.aboutModule', [commonServices.name])
   .config(($stateProvider) => {
     'ngInject';
 

@@ -6,6 +6,16 @@ export default class TimeOffRequestsCtrl {
     this.timeOffService = timeOffService;
   }
 
+  $onInit() {
+    this.updateRequests(this.requests);
+  }
+
+  $onChanges(changesObj) {
+    if (changesObj.requests) {
+      this.updateRequests(this.requests);
+    }
+  }
+
   enhanceRequests = requests =>
     requests.map(item => ({
       ...item,
@@ -20,7 +30,7 @@ export default class TimeOffRequestsCtrl {
       statusColor: this.timeOffService.getStatusColor(item.status),
     }));
 
-  $onInit() {
-    this.timeOffRequests = this.enhanceRequests(this.requests);
+  updateRequests(requests) {
+    this.timeOffRequests = this.enhanceRequests(requests);
   }
 }
