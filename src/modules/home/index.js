@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import commonServices from 'common/services';
+import { controller as ModalController } from 'common/components/modal';
 
 import HomeComponent from './component';
 
@@ -24,4 +25,5 @@ export default angular
 
     $stateProvider.state(homeRoute);
   })
-  .component('homeModule', HomeComponent);
+  .component('homeModule', HomeComponent)
+  .controller('ModalController', ModalController);

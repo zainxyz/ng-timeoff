@@ -1,14 +1,17 @@
 export default class HomeCtrl {
-  constructor($sessionStorage, timeOffService, $scope) {
+  constructor($sessionStorage, timeOffService, $scope, ModalService) {
     'ngInject';
 
     this.timeOffService = timeOffService;
     this.$storage = $sessionStorage;
     this.$scope = $scope;
+    this.$modalService = ModalService;
   }
 
   $onInit() {
     this.updateTimeOffRequests();
+    // a way to watch on the storage and update the time off requests...bad idea
+    // this.$scope.$watch(() => this.$storage, () => this.updateTimeOffRequests());
   }
 
   updateTimeOffRequests = () => {
@@ -17,22 +20,43 @@ export default class HomeCtrl {
   };
 
   updateStatusBadges = () => {
-    this.statusBadges = this.timeOffService.getAllStatuses(this.requests);
+    this.statusBadges = [...this.timeOffService.getAllStatuses(this.requests)];
+  };
+
+  addRequestToStorage = (req) => {
+    this.$storage.timeOffRequests = [
+      ...this.$storage.timeOffRequests,
+      { ...req, status: 'pending', submittedDate: new Date() },
+    ];
+    this.updateTimeOffRequests();
+  };
+
+  removeRequestFromStorage = (req) => {
+    this.$storage.timeOffRequests = [
+      ...this.$storage.timeOffRequests.filter(item => item.submittedDate !== req.submittedDate),
+    ];
+    this.updateTimeOffRequests();
   };
 
   addRequest() {
-    const singleRequest = {
-      status: this.timeOffService.getRandomStatus(),
-      notes:
-        'There is a drag race going on next weekend at the Thunderhill Race Track in Willow, CA.',
-      reason: 'weekend',
-      submittedDate: new Date('September 3, 2017 10:24:11'),
-      startDate: new Date('September 9, 2017 08:00:00'),
-      endDate: new Date('September 10, 2017 18:00:00'),
-    };
-
-    this.$storage.timeOffRequests = [...this.$storage.timeOffRequests, singleRequest];
-
-    this.$scope.$watch(() => this.$storage, () => this.updateTimeOffRequests());
+    this.$modalService
+      .showModal({
+        controller: 'ModalController',
+        controllerAs: '$ctrl',
+        templateUrl: 'modal.template.html',
+        preClose: (modal) => {
+          modal.element.modal('hide');
+        },
+      })
+      .then((modal) => {
+        modal.element.modal();
+        modal.close.then((res) => {
+          this.addRequestToStorage(res);
+        });
+      });
   }
+
+  deleteRequest = (req) => {
+    this.removeRequestFromStorage(req);
+  };
 }

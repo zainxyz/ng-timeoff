@@ -7,6 +7,11 @@ const REASON_MAP = {
   WEEKEND: 'It\'s the Weekend',
 };
 
+const REASON_LIST = Object.keys(REASON_MAP).map(key => ({
+  title: REASON_MAP[key],
+  type: key.toLowerCase(),
+}));
+
 const STATUS_MAP = {
   PENDING: 'Pending',
   APPROVED: 'Approved',
@@ -21,4 +26,4 @@ const STATUS_COLOR_MAP = {
   REJECTED: 'danger',
 };
 
-export { REASON_MAP, STATUS_COLOR_MAP, STATUS_MAP, STATUS_LIST };
+export { REASON_MAP, REASON_LIST, STATUS_COLOR_MAP, STATUS_MAP, STATUS_LIST };

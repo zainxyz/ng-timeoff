@@ -1,3 +1,5 @@
+import isEmpty from 'lodash/isEmpty';
+
 export default class ngTimeOffController {
   constructor($sessionStorage, dataService) {
     'ngInject';
@@ -7,7 +9,7 @@ export default class ngTimeOffController {
   }
 
   $onInit() {
-    if (this.$storage.$supported()) {
+    if (this.$storage.$supported() && isEmpty(this.$storage.timeOffRequests)) {
       this.$storage.timeOffRequests = this.dataService.getInitialTimeOffRequests();
     }
   }

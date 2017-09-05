@@ -5,6 +5,7 @@ import './style.scss';
 export default {
   bindings: {
     requests: '<',
+    removeRequest: '&',
   },
   controller,
   name: 'time-off-requests',
