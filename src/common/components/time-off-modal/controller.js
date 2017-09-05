@@ -1,3 +1,5 @@
+import addDays from 'date-fns/add_days';
+
 export default class TimeOffModalController {
   constructor($element, timeOffService, close, $scope, TIME_OFF) {
     'ngInject';
@@ -41,8 +43,13 @@ export default class TimeOffModalController {
       opened: false,
     };
     $scope.openEndDatePopup = () => {
-      // add a minimum date to the end date popup by taking the chosen start date
-      $scope.endDateOptions.minDate = $scope.timeOffRequest.startDate;
+      // Grab the current start date is one is present
+      const minDate = $scope.timeOffRequest.startDate
+        ? $scope.timeOffRequest.startDate
+        : new Date();
+      // add a minimum date to the end date popup by taking the chosen start date and adding
+      // 1 additional day to it.
+      $scope.endDateOptions.minDate = addDays(minDate, 1);
       $scope.endDatePopup.opened = true;
     };
     // Validate the form while the user is filling it out to enable the submit button
