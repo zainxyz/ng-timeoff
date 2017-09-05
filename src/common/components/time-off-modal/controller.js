@@ -1,5 +1,5 @@
 export default class TimeOffModalController {
-  constructor($element, close, $scope, TIME_OFF) {
+  constructor($element, timeOffService, close, $scope, TIME_OFF) {
     'ngInject';
 
     this.$element = $element;
@@ -35,7 +35,7 @@ export default class TimeOffModalController {
       $scope.endDatePopup.opened = true;
     };
     // Validate the form while the user is filling it out to enable the submit button
-    $scope.validateForm = form => !this.validateForm(form);
+    $scope.validateForm = request => !timeOffService.validateTimeOffRequest(request);
   }
 
   /**
@@ -68,12 +68,4 @@ export default class TimeOffModalController {
     this.$element.modal('hide');
     this.close({ canceled: true, ...res }, 500);
   };
-
-  /**
-   * A simple validation method to validate the create-time-off-request form
-   * @method validateForm
-   * @param  {Object}     form The form data
-   * @return {boolean}
-   */
-  validateForm = form => form && form.reason && form.startDate && form.endDate;
 }

@@ -16,7 +16,7 @@ export default function TimeOffService(TIME_OFF) {
      * @return {string}
      */
     toReasonString(reason) {
-      return REASON_MAP[reason.toUpperCase()];
+      return reason ? REASON_MAP[reason.toUpperCase()] : '';
     },
     /**
      * Transform the current status into its corresponding status color
@@ -25,7 +25,7 @@ export default function TimeOffService(TIME_OFF) {
      * @return {string}
      */
     getStatusColor(status) {
-      return STATUS_COLOR_MAP[status.toUpperCase()];
+      return status ? STATUS_COLOR_MAP[status.toUpperCase()] : '';
     },
     /**
      * Extract all of the statuses from the passed in requests and tally them up
@@ -65,6 +65,15 @@ export default function TimeOffService(TIME_OFF) {
      */
     getRandomStatus() {
       return STATUS_LIST[random(0, STATUS_LIST.length - 1)].toLowerCase();
+    },
+    /**
+     * Validate a given time-off request to see if it has a reason / start + end date
+     * @method validateTimeOffRequest
+     * @param  {Object}               req The request to validateForm
+     * @return {boolean}
+     */
+    validateTimeOffRequest(req) {
+      return req && req.reason && req.startDate && req.endDate;
     },
   };
 }

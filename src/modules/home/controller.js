@@ -76,9 +76,12 @@ export default class HomeCtrl {
       })
       .then((modal) => {
         modal.element.modal();
-        modal.close.then((res) => {
-          // Once the user closes the modal, then add the request to the storage.
-          this.addRequestToStorage(res);
+        modal.close.then((request) => {
+          // Once the user closes the modal, then add the request to the storage, after validating
+          // it for a valid time-off request
+          if (this.timeOffService.validateTimeOffRequest(request)) {
+            this.addRequestToStorage(request);
+          }
         });
       });
   }
