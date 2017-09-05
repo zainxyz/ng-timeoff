@@ -38,3 +38,19 @@
 .bg-light-not-important {
   background-color: #f8f9fa;
 }
+.uib-day .btn {
+  cursor: pointer;
+  &:hover {
+    background-color: #138496;
+    color: #fff;
+  }
+}
+.uib-day .btn[disabled] {
+  &:hover {
+    background-color: #f8f9fa;
+    color: #868e96;
+  }
+}
+.btn[disabled] {
+  cursor: not-allowed;
+}

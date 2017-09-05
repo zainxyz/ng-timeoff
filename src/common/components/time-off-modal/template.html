@@ -27,7 +27,7 @@
             <div class="start-date col">
               <label for="timeOffRequestStartDate" class="col-form-label">Start Date:</label>
               <div class="d-flex justify-content-between align-items-center">
-                <input type="text" class="form-control rounded-0 rounded-left" uib-datepicker-popup="{{ dateFormat }}" ng-model="timeOffRequest.startDate" is-open="startDatePopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                <input type="text" class="form-control rounded-0 rounded-left" uib-datepicker-popup="{{ dateFormat }}" ng-model="timeOffRequest.startDate" is-open="startDatePopup.opened" datepicker-options="startDateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
                 id="timeOffRequestStartDate" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-light btn-sm ml-0" ng-click="openStartDatePopup()"><i class="material-icons">date_range</i></button>
@@ -37,7 +37,7 @@
             <div class="end-date col">
               <label for="timeOffRequestEndDate" class="col-form-label">End Date:</label>
               <div class="d-flex justify-content-between align-items-center">
-                <input type="text" class="form-control rounded-0 rounded-left" uib-datepicker-popup="{{ dateFormat }}" ng-model="timeOffRequest.endDate" is-open="endDatePopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                <input type="text" class="form-control rounded-0 rounded-left" uib-datepicker-popup="{{ dateFormat }}" ng-model="timeOffRequest.endDate" is-open="endDatePopup.opened" datepicker-options="endDateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
                 id="timeOffRequestEndDate" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-light btn-sm ml-0" ng-click="openEndDatePopup()"><i class="material-icons">date_range</i></button>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" name="randomizeTheStatus" value="true" data-ng-model="$parent.timeOffRequest.randomizeStatus">
+                <input type="checkbox" name="randomizeTheStatus" value="true" data-ng-model="timeOffRequest.randomizeStatus">
                 Should we randomize the status of this request upon creation? (default: 'pending')
               </label>
             </div>

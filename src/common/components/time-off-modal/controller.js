@@ -7,6 +7,8 @@ export default class TimeOffModalController {
 
     const REASON_LIST = [...TIME_OFF.REASON_LIST];
 
+    $scope.timeOffRequest = {};
+
     // Bind functions to the scope
     $scope.cancelModal = res => this.cancelModal(res);
     $scope.saveModal = res => this.saveModal(res);
@@ -15,7 +17,14 @@ export default class TimeOffModalController {
     // Other scope bindings for the date popup (angular ui bootstrap)
     $scope.dateFormat = 'dd-MMMM-yyyy';
     $scope.altInputFormats = ['M!/d!/yyyy'];
-    $scope.dateOptions = {
+    $scope.startDateOptions = {
+      dateDisabled: this.dateDisabled,
+      formatYear: 'yy',
+      maxDate: new Date(2049, 12, 31),
+      minDate: new Date(),
+      startingDay: 1,
+    };
+    $scope.endDateOptions = {
       dateDisabled: this.dateDisabled,
       formatYear: 'yy',
       maxDate: new Date(2049, 12, 31),
@@ -32,6 +41,8 @@ export default class TimeOffModalController {
       opened: false,
     };
     $scope.openEndDatePopup = () => {
+      // add a minimum date to the end date popup by taking the chosen start date
+      $scope.endDateOptions.minDate = $scope.timeOffRequest.startDate;
       $scope.endDatePopup.opened = true;
     };
     // Validate the form while the user is filling it out to enable the submit button
