@@ -2,6 +2,11 @@ export default function DataService(timeOffService) {
   'ngInject';
 
   return {
+    /**
+     * Generate some initial time off requests for when there aren't any present in the $storage.
+     * @method getInitialTimeOffRequests
+     * @return {Array}                  A list of initial time off requests
+     */
     getInitialTimeOffRequests() {
       return [
         {

@@ -9,12 +9,30 @@ export default function TimeOffService(TIME_OFF) {
   const STATUS_LIST = [...TIME_OFF.STATUS_LIST];
 
   return {
+    /**
+     * Convert the reason to a readable string
+     * @method toReasonString
+     * @param  {string}       reason The reason to be converted
+     * @return {string}
+     */
     toReasonString(reason) {
       return REASON_MAP[reason.toUpperCase()];
     },
+    /**
+     * Transform the current status into its corresponding status color
+     * @method getStatusColor
+     * @param  {string}       status The status to be transformed
+     * @return {string}
+     */
     getStatusColor(status) {
       return STATUS_COLOR_MAP[status.toUpperCase()];
     },
+    /**
+     * Extract all of the statuses from the passed in requests and tally them up
+     * @method getAllStatuses
+     * @param  {Array}       requests The current time off requests
+     * @return {Array}
+     */
     getAllStatuses(requests) {
       const statusCounts = {
         pending:
@@ -40,6 +58,11 @@ export default function TimeOffService(TIME_OFF) {
         count: statusCounts[status.toLowerCase()],
       }));
     },
+    /**
+     * Are we feeling lucky? Let's generate a random status
+     * @method getRandomStatus
+     * @return {string}        The randomized status
+     */
     getRandomStatus() {
       return STATUS_LIST[random(0, STATUS_LIST.length - 1)].toLowerCase();
     },

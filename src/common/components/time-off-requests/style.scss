@@ -1,5 +1,10 @@
-.time-off-date {
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
-  flex: 0 0 auto;
-  flex-basis: 10%;
+.time-off-reqests {
+  .card-body {
+    flex-basis: 20%;
+  }
+  .time-off-date {
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    flex: 0 0 auto;
+    flex-basis: 10%;
+  }
 }

@@ -19,6 +19,26 @@ module.exports = {
     'linebreak-style': [2, 'windows'],
     semi: [2, 'always'],
     'no-param-reassign': 0,
+    'valid-jsdoc': [
+      'warn',
+      {
+        prefer: {
+          returns: 'return',
+          yield: 'yields',
+        },
+        preferType: {
+          Boolean: 'boolean',
+          Number: 'number',
+          String: 'string',
+          array: 'Array',
+          function: 'Function',
+          object: 'Object',
+        },
+        requireParamDescription: false,
+        requireReturn: false,
+        requireReturnDescription: false,
+      },
+    ],
   },
   env: {
     amd: true,

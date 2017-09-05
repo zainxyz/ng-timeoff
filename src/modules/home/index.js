@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 import commonServices from 'common/services';
-import { controller as ModalController } from 'common/components/modal';
+import { controller as ModalController } from 'common/components/time-off-modal';
 
 import HomeComponent from './component';
 

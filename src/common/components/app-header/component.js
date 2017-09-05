@@ -7,10 +7,8 @@ export default {
   controller,
   name: 'app-header',
   template: `
-    <!-- main application header -->
     <div class="app-header">
-      <!-- application navigation header -->
-      <app-nav brand="{{ $ctrl.brand }}" slogan="{{ $ctrl.slogan }}" navitems="$ctrl.navItems"></app-nav>
+      <app-nav brand="{{ $ctrl.brand }}" tagline="{{ $ctrl.tagline }}" navitems="$ctrl.navItems"></app-nav>
     </div>
   `,
 };

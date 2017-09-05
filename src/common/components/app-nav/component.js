@@ -5,7 +5,7 @@ export default {
   bindings: {
     brand: '@',
     navitems: '<',
-    slogan: '@',
+    tagline: '@',
   },
   controller,
   name: 'app-nav',

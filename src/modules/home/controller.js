@@ -14,23 +14,43 @@ export default class HomeCtrl {
     // this.$scope.$watch(() => this.$storage, () => this.updateTimeOffRequests());
   }
 
+  /**
+   * Update the current time off requests that are being displayed to the user
+   * @method updateTimeOffRequests
+   */
   updateTimeOffRequests = () => {
     this.requests = [...this.$storage.timeOffRequests];
     this.updateStatusBadges();
   };
 
+  /**
+   * Update all of the current status badges (pending:0, approved:3, rejected:1)
+   * @method updateStatusBadges
+   */
   updateStatusBadges = () => {
     this.statusBadges = [...this.timeOffService.getAllStatuses(this.requests)];
   };
 
+  /**
+   * Add a single time off request to the current $sessionStorage
+   * @method addRequestToStorage
+   * @param  {Object}            req The request to be added to the storage
+   */
   addRequestToStorage = (req) => {
+    const status = req.randomizeStatus ? this.timeOffService.getRandomStatus() : 'pending';
+
     this.$storage.timeOffRequests = [
       ...this.$storage.timeOffRequests,
-      { ...req, status: 'pending', submittedDate: new Date() },
+      { ...req, status, submittedDate: new Date() },
     ];
     this.updateTimeOffRequests();
   };
 
+  /**
+   * Remove a single time off request from the current $sessionStorage
+   * @method removeRequestFromStorage
+   * @param  {Object}                 req The request to be removed from the storage
+   */
   removeRequestFromStorage = (req) => {
     this.$storage.timeOffRequests = [
       ...this.$storage.timeOffRequests.filter(item => item.submittedDate !== req.submittedDate),
@@ -38,7 +58,13 @@ export default class HomeCtrl {
     this.updateTimeOffRequests();
   };
 
-  addRequest() {
+  /**
+   * Create a time off request when the user clicks on the 'create time off request' button.
+   * Open up a modal for the user.
+   *
+   * @method createTimeOffRequest
+   */
+  createTimeOffRequest() {
     this.$modalService
       .showModal({
         controller: 'ModalController',
@@ -51,11 +77,17 @@ export default class HomeCtrl {
       .then((modal) => {
         modal.element.modal();
         modal.close.then((res) => {
+          // Once the user closes the modal, then add the request to the storage.
           this.addRequestToStorage(res);
         });
       });
   }
 
+  /**
+   * Delete a time off request when the user clicks on the 'X' button next to each of the requests.
+   * @method deleteRequest
+   * @param  {Object}      req The request to be deleted
+   */
   deleteRequest = (req) => {
     this.removeRequestFromStorage(req);
   };

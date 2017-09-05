@@ -10,12 +10,27 @@ export default class TimeOffRequestsCtrl {
     this.updateRequests(this.requests);
   }
 
+  /**
+   * Whenever the passed in 'requests' change, we need to update the requests
+   * that are being shown to the user.
+   *
+   * @method $onChanges
+   * @param  {Object}   changesObj The current component's change objec
+   */
   $onChanges(changesObj) {
     if (changesObj.requests) {
       this.updateRequests(this.requests);
     }
   }
 
+  /**
+   * We enhance the regular requests by adding in additional normalized data to be displayed
+   * to the user.
+   *
+   * @method enhanceRequests
+   * @param  {Array}        requests The list of requests
+   * @return {Array}                 The normlaized list of requests
+   */
   enhanceRequests = requests =>
     requests.map(item => ({
       ...item,
@@ -30,6 +45,11 @@ export default class TimeOffRequestsCtrl {
       statusColor: this.timeOffService.getStatusColor(item.status),
     }));
 
+  /**
+   * Update the timeOffRequests that are being used in this component by normalizing them.
+   * @method updateRequests
+   * @param  {Array}       requests The list of requests
+   */
   updateRequests(requests) {
     this.timeOffRequests = this.enhanceRequests(requests);
   }

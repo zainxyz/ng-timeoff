@@ -23,7 +23,7 @@ import {
   datePickerMonthTemplate,
   datePickerYearTemplate,
 } from 'common/components/date-picker';
-import { template as ModalTemplate } from 'common/components/modal';
+import { template as ModalTemplate } from 'common/components/time-off-modal';
 import ngTimeOffController from './controller';
 
 angular
@@ -48,6 +48,7 @@ angular
   .run(($templateCache) => {
     'ngInject';
 
+    // Can be replaced with ngTemplate-loader for webpack...
     $templateCache.put('modal.template.html', ModalTemplate);
     $templateCache.put('uib/template/datepickerPopup/popup.html', datePickerTemplate);
     $templateCache.put('uib/template/datepicker/day.html', datePickerDayTemplate);

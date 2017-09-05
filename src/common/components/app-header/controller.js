@@ -6,7 +6,9 @@ export default class AppHeaderCtrl {
   }
 
   $onInit() {
+    // populate the navigational items
     this.navItems = this.navigationService.getNav();
-    this.slogan = 'An Angular 1.X implementation of a simple time-off component';
+    // retrieve the tagline
+    this.tagline = this.navigationService.getTagline();
   }
 }

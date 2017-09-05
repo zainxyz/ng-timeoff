@@ -3,6 +3,13 @@ import differenceInDays from 'date-fns/difference_in_days';
 
 export default function DateService() {
   return {
+    /**
+     * Transform a given JS Date object to a human readable format
+     * @method toDateString
+     * @param  {Object}     date A JavaScript date object
+     * @param  {string}     type A type to format that date object to
+     * @return {string}
+     */
     toDateString(date, type) {
       switch (type) {
         case 'day':

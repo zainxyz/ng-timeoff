@@ -2,6 +2,12 @@ export default function ContentService() {
   'ngInject';
 
   return {
+    /**
+     * Get some initial content for the different views
+     * @method getContent
+     * @param  {string}   routeName The name of the current routeName
+     * @return {Object}
+     */
     getContent(routeName) {
       switch (routeName) {
         case 'home':
@@ -11,7 +17,6 @@ export default function ContentService() {
               'View your time-off requests and see if they have been approved or rejected.',
               'In order to submit a new time-off request, please click on the \'Create Time Off\' button.',
               '4 requests are added upon each application load, and populated with random statuses',
-              'PS: Right now there is no way of changing the request\'s status.',
             ],
           };
         case 'about':
