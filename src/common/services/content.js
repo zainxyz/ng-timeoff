@@ -15,8 +15,7 @@ export default function ContentService() {
             title: 'Time-off Requests',
             subtitles: [
               'View your time-off requests and see if they have been approved or rejected.',
-              'In order to submit a new time-off request, please click on the \'Create Time Off\' button.',
-              '4 requests are added upon each application load, and populated with random statuses',
+              'Please check the \'About\' page for more information on how to use this time-off application',
             ],
           };
         case 'about':
@@ -24,7 +23,10 @@ export default function ContentService() {
             title: 'About ng-Time-Off',
             subtitles: [
               'Submit a time-off request to your supervisor!',
-              'Click on the \'Create Time off\' button and start filling out the time-off request.',
+              'In order to submit a new time-off request, please click on the \'Create Time Off\' button.',
+              'In order to edit a time-off request, please click on the \'pencil\' button towards the right of the request.',
+              'In order to delete a time-off request, please click on the \'X\' button towards the right of the request.',
+              'If no time-off requests are present, then 4 are automatically added upon application bootstrap cycle.',
               'You can choose from a couple of different reasons:',
               '- Traffic Court',
               '- Coding Challenge',

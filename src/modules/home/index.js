@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import commonServices from 'common/services';
 import { controller as ModalController } from 'common/components/time-off-modal';
+import { controller as ConfirmationModalController } from 'common/components/confirmation-modal';
 
 import HomeComponent from './component';
 
@@ -26,4 +27,5 @@ export default angular
     $stateProvider.state(homeRoute);
   })
   .component('homeModule', HomeComponent)
-  .controller('ModalController', ModalController);
+  .controller('ModalController', ModalController)
+  .controller('ConfirmationModalController', ConfirmationModalController);

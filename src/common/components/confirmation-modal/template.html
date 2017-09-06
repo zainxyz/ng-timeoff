@@ -1,0 +1,26 @@
+<div class="modal fade confirmation-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-info text-light rounded-top">
+        <h5 class="modal-title lead">Remove the <span class="font-weight-bold">{{ request.reasonString }}</span> Time Off Request</h5>
+      </div>
+      <form novalidate class="time-off-form">
+        <div class="modal-body p-0">
+          <p class="m-0 px-4 pt-3">Are you sure you would like to delete the <span class="font-weight-bold">{{ request.reasonString }}</span> request, which is from <span class="font-weight-bold">{{ request.startDate | date }}</span> to <span class="font-weight-bold">{{ request.endDate | date }}</span> for a total of <span class="font-weight-bold">{{ request.date.daysCount }}</span> days?</p>
+          <hr />
+          <p class="m-0 px-4 font-weight-bold">Request Details:</p>
+          <ul class="m-0 px-4 pb-3 list-unstyled">
+            <li>Reason: <span class="font-italic">{{ request.reasonString }}</span></li>
+            <li>Status: <span class="font-italic">{{ request.status }}</span></li>
+            <li>Notes: <span class="font-italic">{{ request.notes }}</span></li>
+            <li>Submitted: <span class="font-italic">{{ request.submittedDate | date }}</span></li>
+          </li>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-secondary" data-ng-click="cancelModal(false)">Cancel</button>
+          <button type="button" class="btn btn-info" data-ng-click="removeRequest(true)">Remove the Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

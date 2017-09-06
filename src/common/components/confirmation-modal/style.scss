@@ -1,0 +1,56 @@
+.time-off-modal {
+  .reasons {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  .reasons-group {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    .form-check {
+      &:last-of-type {
+        margin-right: 0 !important;
+      }
+    }
+  }
+  .reasons-group-item {
+    align-items: center;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: 0.3s background-color ease-in;
+    > * {
+      pointer-events: none;
+    }
+  }
+  input[type='radio']:checked + .reasons-group-item {
+    background-color: darken(#f8f9fa, 10); // bootstrap - bg-light darkened
+  }
+  .form-check-label input[type='radio'] {
+    display: none;
+  }
+}
+.bg-light-not-important {
+  background-color: #f8f9fa;
+}
+.uib-day .btn {
+  cursor: pointer;
+  &:hover {
+    background-color: #138496;
+    color: #fff;
+  }
+}
+.uib-day .btn[disabled] {
+  &:hover {
+    background-color: #f8f9fa;
+    color: #868e96;
+  }
+}
+.btn[disabled] {
+  cursor: not-allowed;
+}

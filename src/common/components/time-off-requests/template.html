@@ -21,7 +21,10 @@
       <i class="material-icons text-secondary">{{ request.reason }}</i>
       <p class="text-uppercase mb-0 text-{{ request.statusColor }}">{{ request.status }}</p>
     </div>
-    <div class="card-body p-0 pl-2" style="flex:0 0 auto;">
+    <div class="card-body time-off-actions p-2">
+      <button type="button" class="btn btn-light btn-sm p-1" style="line-height:1;cursor:pointer;" data-ng-click="$ctrl.editRequest({request})">
+        <i class="material-icons text-secondary">create</i>
+      </button>
       <button type="button" class="btn btn-light btn-sm p-1" style="line-height:1;cursor:pointer;" data-ng-click="$ctrl.removeRequest({request})">
         <i class="material-icons text-secondary">clear</i>
       </button>

@@ -6,6 +6,7 @@ export default {
   bindings: {
     requests: '<',
     removeRequest: '&',
+    editRequest: '&',
   },
   controller,
   name: 'time-off-requests',
