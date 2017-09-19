@@ -58,9 +58,12 @@ export default function TimeOffService(TIME_OFF) {
       };
 
       return Object.keys(STATUS_MAP).map(status => ({
+        count: statusCounts[status.toLowerCase()],
+        max: requests.length,
+        min: 0,
         name: STATUS_MAP[status],
         type: this.getStatusColor(status),
-        count: statusCounts[status.toLowerCase()],
+        width: statusCounts[status.toLowerCase()] / requests.length * 100,
       }));
     },
     /**

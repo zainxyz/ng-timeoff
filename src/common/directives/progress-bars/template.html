@@ -1,0 +1,13 @@
+<div class="progress">
+  <div
+    aria-valuemax="{{ bar.max }}"
+    aria-valuemin="{{ bars.min }}"
+    aria-valuenow="{{ bar.count }}"
+    class="progress-bar bg-{{ bar.type }}"
+    data-ng-repeat="bar in bars"
+    role="progressbar"
+    style="width: {{ bar.width }}%; height: 35px; display: flex; justify-content: center; align-items: center;"
+  >
+    {{ bar.name.toUpperCase() + ' - ' + bar.count }}
+  </div>
+</div>
